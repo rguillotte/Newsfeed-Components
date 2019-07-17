@@ -85,6 +85,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Tonights Baseball',
+    date: 'Jul 16th, 2019',
+    firstParagraph: `Starting pitcher choke up scorecard tossed plunked plunked robbed rotation rotation. Hall of fame cy young extra innings center field outfield, inning rake. Manager league manager curve third base gap disabled list warning track dead red. Assist fastball 1-2-3 rubber petey moneyball nubber extra innings strike zone. Left field force leather baseball card range plunked catcher rally. Streak appeal first baseman baseline tigers strikeout mound 1-2-3.`,
+
+    secondParagraph: `Outfielder second base silver slugger designated hitter extra innings league take shift red sox. Petey first base robbed wrigley batting average steal practice 1-2-3 double play. Baseball bench cheese helmet second baseman stance bandbox dead ball era league. Cycle pickoff can of corn basehit grounder hit by pitch rubber arm. Rotation rotation at-bat outfield 4-6-3 hack rally. Good eye balk fenway hack range, sacrifice bunt.`,
+
+    thirdParagraph: `Rake basehit practice series hall of fame shutout can of corn. Wrigley umpire cheese backstop 1-2-3 rake chin music mendoza line. Loss tag double switch dead ball era base on balls bullpen tapper triple-A. Rally base reds left field assist, rotation moneyball pine tar national pastime. Right fielder baseline triple-A backstop hack peanuts all-star tapper. Starter rubber game save stadium mendoza line 4-6-3 rubber league.`
   }
 ];
 
@@ -112,3 +121,53 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
+
+const articles = document.querySelector('.articles');
+
+data.forEach(data => {
+  articles.appendChild(createArticle(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph))
+})
+
+function createArticle(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+  //define new elements
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const para1 = document.createElement('p');
+  const para2 = document.createElement('p');
+  const para3 = document.createElement('p');
+  const articleButton = document.createElement('span');
+
+  //Setup structure of elements
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(para1);
+  article.appendChild(para2);
+  article.appendChild(para3);
+  article.appendChild(articleButton);
+
+  //set class names
+  article.classList.add('article');
+  articleDate.classList.add('date');
+  articleButton.classList.add('expandButton');
+
+  //event listener
+  articleButton.addEventListener('click',()=>{
+    article.classList.toggle('article-open');
+  })
+
+  //set text content
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  para1.textContent = firstParagraph;
+  para2.textContent = secondParagraph;
+  para3.textContent = thirdParagraph;
+  articleButton.textContent = 'Expand';
+
+  return article;
+
+}
+
+
+
+
