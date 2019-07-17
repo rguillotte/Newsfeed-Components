@@ -38,13 +38,14 @@ function createMenu(arr){
   //create elements
   const menuDiv = document.createElement('div');
   const list = document.createElement('ul');
-  const listItem = document.createElement('li');
-  list.appendChild(listItem);
+  
   
   arr.forEach(item=>{
+    const listItem = document.createElement('li');
     listItem.textContent = item;
-    // list.appendChild(listItem);
+    list.appendChild(listItem);
   })
+
 
   //add classes
   menuDiv.classList.add('menu');
